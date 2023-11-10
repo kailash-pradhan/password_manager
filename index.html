@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Password Manager - Login</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Login</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="loginForm" method="POST" action="homepage.php" onsubmit="return validate()">
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" id="password" name="password" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function validate() {
+            const passwordInput = document.getElementById("password");
+            if (passwordInput.value.length < 8) {
+                alert("Password must be at least 8 characters");
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission
+        }
+    </script>
+</body>
+</html>

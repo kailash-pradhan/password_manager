@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Password Manager - Sign Up</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Sign Up</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="signupForm" method="POST" action="registration.php" onsubmit="return validateForm()">
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile">Mobile:</label>
+                                <input type="number" id="mobile" name="mobile" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" id="password" name="password" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Sign Up</button>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <p>Already have an account? <a href="index.html">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function validateForm() {
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const mobileInput = document.getElementById("mobile");
+            const passwordInput = document.getElementById("password");
+
+            // Regular expressions for basic validation
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            const mobileRegex = /^[0-9]{10}$/;
+            const nameRegex = /^[A-Za-z\s]+$/;
+    
+
+            if (!nameRegex.test(nameInput.value)) {
+                alert("Invalid Name");
+                return false;
+            }
+
+            if (!emailRegex.test(emailInput.value)) {
+                alert("Invalid email address");
+                return false;
+            }
+
+            if (!mobileRegex.test(mobileInput.value)) {
+                alert("Invalid mobile number (10 digits)");
+                return false;
+            }
+            if (passwordInput.value.length < 8) {
+                alert("Password should be at least 8 characters");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
